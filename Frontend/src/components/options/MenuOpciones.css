@@ -1,0 +1,50 @@
+.menu-opciones {
+    margin-top: 60px;
+    background-color: #DCEEDB;
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    border-right: 1px solid black
+}
+
+.menu-opciones h2 {
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.menu-opciones > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    gap: 15px; 
+    margin-top: -30px;
+}
+
+.menu-opciones button {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    background-color: #4a5568;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.menu-opciones button:hover {
+    background-color: #2d3748;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

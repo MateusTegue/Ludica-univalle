@@ -1,0 +1,64 @@
+
+.dashboard{
+    width: 50%;
+    margin-top: 50px;
+    margin-left: 10px;
+}
+
+
+.dashboard-estudiantes {
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.titulo-lista {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.grid-graficos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
+    gap: 30px;
+    justify-content: center;
+}
+
+.grafico-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.grafico-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4a5568;
+    font-size: 1.2em;
+}
+
+.cargando, .error {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+}
+
+h3{
+    text-align: center;
+    margin: 10px;
+}
+
+.error {
+    color: #e74c3c;
+}
+
+@media (max-width: 768px) {
+    .grid-graficos {
+        grid-template-columns: 1fr;
+    }
+    
+    .grafico-container {
+        padding: 15px;
+    }
+}
