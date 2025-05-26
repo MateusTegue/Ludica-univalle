@@ -110,11 +110,38 @@ export function TotalEstudiantes() {
             {
                 data: Object.values(carreras),
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(54, 162, 235, 0.7)',
-                    'rgba(255, 206, 86, 0.7)',
-                    'rgba(75, 192, 192, 0.7)',
-                    'rgba(153, 102, 255, 0.7)',
+                    'rgba(255, 99, 132, 0.7)',   // rojo rosado
+                    'rgba(54, 162, 235, 0.7)',   // azul
+                    'rgba(255, 206, 86, 0.7)',   // amarillo
+                    'rgba(75, 192, 192, 0.7)',   // turquesa
+                    'rgba(153, 102, 255, 0.7)',  // morado
+                    'rgba(255, 159, 64, 0.7)',   // naranja
+                    'rgba(199, 199, 199, 0.7)',  // gris claro
+                    'rgba(83, 102, 255, 0.7)',   // azul intenso
+                    'rgba(255, 99, 71, 0.7)',    // tomate
+                    'rgba(60, 179, 113, 0.7)',   // verde medio
+                    'rgba(238, 130, 238, 0.7)',  // violeta
+                    'rgba(100, 149, 237, 0.7)',  // azul acero
+                    'rgba(255, 105, 180, 0.7)',  // rosa intenso
+                    'rgba(46, 139, 87, 0.7)',    // verde bosque
+                    'rgba(160, 82, 45, 0.7)',    // marrón
+                    'rgba(70, 130, 180, 0.7)',    // azul grisáceo
+
+                    'rgba(210, 105, 30, 0.7)',   // chocolate
+                    'rgba(0, 191, 255, 0.7)',    // azul cielo profundo
+                    'rgba(127, 255, 212, 0.7)',  // aguamarina
+                    'rgba(255, 20, 147, 0.7)',   // rosa profundo
+                    'rgba(144, 238, 144, 0.7)',  // verde claro
+                    'rgba(255, 215, 0, 0.7)',    // dorado
+                    'rgba(0, 206, 209, 0.7)',    // turquesa oscuro
+                    'rgba(123, 104, 238, 0.7)',  // azul medio pizarra
+                    'rgba(255, 182, 193, 0.7)',  // rosa claro
+                    'rgba(189, 183, 107, 0.7)',  // caqui oscuro
+                    'rgba(72, 209, 204, 0.7)',   // turquesa medio
+                    'rgba(176, 224, 230, 0.7)',  // azul pálido
+                    'rgba(95, 158, 160, 0.7)',   // azul cadete
+                    'rgba(205, 92, 92, 0.7)',    // rojo indio
+                    'rgba(233, 150, 122, 0.7)'   // salmón oscuro
                 ],
                 borderWidth: 1
             }
@@ -125,7 +152,6 @@ export function TotalEstudiantes() {
         <section className="dashboard2">
             <div className="dashboard-estudiantes">
                 <h1 className="titulo-lista">Estadísticas de Estudiantes</h1>
-                
                 <div className="grid-graficos">
                     <div className="grafico-container">
                         <h2>Repeticiones y Lanzamientos</h2>
@@ -140,7 +166,22 @@ export function TotalEstudiantes() {
                             }} 
                         />
                     </div>
-                    
+                    {/* <div className="grafico-containerBar" style={{ overflowX: 'auto' }}>
+                       <h2>Repeticiones y Lanzamientos</h2>
+                         <div style={{ minWidth: '800px' }}>
+                            <Bar 
+                            data={barData} 
+                            options={{
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                legend: { position: 'top' },
+                                title: { display: true, text: 'Comparación por estudiante' }
+                                }
+                            }} 
+                            />
+                          </div>
+                        </div> */}
                     <div className="grafico-container">
                         <h2>Tiempos de Ejecución</h2>
                         <Line 

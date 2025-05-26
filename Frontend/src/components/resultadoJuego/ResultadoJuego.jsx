@@ -10,7 +10,11 @@ import {
   Tooltip,
   Legend
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Pie, Radar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
+import { Bubble } from 'react-chartjs-2';
+
 import './ResultadoJuego.css';
 
 // registramos los componenetes necesarios para realozar la graficas 
@@ -64,6 +68,39 @@ export function EstadisticasJugadas() {
         scales: { y: { beginAtZero: true } }
     };
 
+    const data = {
+        labels: ['Desviación', 'Varianza'],
+        datasets: [{
+            label: 'Estadísticas',
+            data: [0.1, 0.9],
+            backgroundColor: ['#4bc0c0', '#ff6384'],
+            borderWidth: 1
+           }]
+        };
+    
+    const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+            position: 'top'
+            },
+            tooltip: {
+            enabled: true
+            }
+        },
+        // Eliminamos las escalas
+        scales: {
+            x: {
+            display: false
+            },
+            y: {
+            display: false
+            }
+        }
+        };
+
+
     const createChartData = (metric, title) => {
         const moda = estadisticas[metric].moda;
         const incluirModa = Array.isArray(moda) && moda.length === 1;
@@ -85,6 +122,32 @@ export function EstadisticasJugadas() {
         }
         return { labels, datasets: [{ label: title, data, backgroundColor}]};
     };
+
+
+    const createVarianzaDesviacionData = (metric, title) => {
+    const labels = ['Desviación', 'Varianza'];
+    const data = [
+        estadisticas[metric].desviacion,
+        estadisticas[metric].varianza
+    ];
+    const backgroundColor = [
+        'rgba(54, 162, 235, 0.7)',
+        'rgba(255, 99, 132, 0.7)',
+    ];
+    return {
+        labels,
+        datasets: [
+            {
+                label: title,
+                data,
+                backgroundColor
+            }
+        ]
+    };
+};
+
+
+
     return (
         <div className="estadisticas-container">
             <h4 className="titulo-principal">Estadísticas de Jugadas</h4>
@@ -138,20 +201,38 @@ export function EstadisticasJugadas() {
 
             {/* Resumen estadistico de los resultados  */}
             <div className="resumen-estadistico">
-                <h5 className="titulo-resumen">Resumen Estadístico</h5>
-                <div className="metricas-grid">
-                    {['repeticiones', 'tiempo', 'lanzamientos'].map((metric) => (
-                        <div key={`resumen-${metric}`} className="metrica-card">
-                            <h3 className="titulo-card">{metric.charAt(0).toUpperCase() + metric.slice(1)}</h3>
-                            <p><strong>Media:</strong> {formatNumber(estadisticas[metric]?.media)}</p>
-                            <p><strong>Mediana:</strong> {formatNumber(estadisticas[metric]?.mediana)}</p>
-                            <p><strong>Moda:</strong> {formatNumber(estadisticas[metric]?.moda)}</p>
-                            <p><strong>Desviación:</strong> {formatNumber(estadisticas[metric]?.desviacion)}</p>
-                            <p><strong>Varianza:</strong> {formatNumber(estadisticas[metric]?.varianza)}</p>
+                <div className="grid-tres-columnas">
+                    <div className="grafico-card">
+                        <h5 className="titulo-grafico">Repeticiones - Dispersión</h5>
+                        <div className="grafico-wrapper">
+                            <Doughnut
+                                data={createVarianzaDesviacionData('repeticiones', 'Repeticiones')}
+                                options={options}
+                            />
                         </div>
-                    ))}
+                    </div>
+                    <div className="grafico-card">
+                        <h5 className="titulo-grafico">Tiempo - Dispersión</h5>
+                        <div className="grafico-wrapper">
+                            <Doughnut
+                                data={createVarianzaDesviacionData('tiempo', 'Tiempo')}
+                                options={options}
+                            />
+                        </div>
+                    </div>
+                    <div className="grafico-card">
+                        <h5 className="titulo-grafico">Lanzamientos - Dispersión</h5>
+                        <div className="grafico-wrapper">
+                            <Doughnut
+                                data={createVarianzaDesviacionData('lanzamientos', 'Lanzamientos')}
+                                options={options}
+                            />
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     );
 }
+
