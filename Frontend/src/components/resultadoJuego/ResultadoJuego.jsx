@@ -150,9 +150,8 @@ export function EstadisticasJugadas() {
 
     return (
         <div className="estadisticas-container">
-            <h4 className="titulo-principal">Estadísticas de Jugadas</h4>
             <div className="grid-tres-columnas">
-                <div className="grafico-card">
+                <div>
                     <h5 className="titulo-grafico">Repeticiones - Tendencia Central</h5>
                     <div className="grafico-wrapper">
                         <Bar
@@ -167,7 +166,7 @@ export function EstadisticasJugadas() {
                         />
                     </div>
                 </div>
-                <div className="grafico-card">
+                <div>
                     <h5 className="titulo-grafico">Tiempo - Tendencia Central</h5>
                     <div className="grafico-wrapper">
                         <Bar
@@ -182,7 +181,7 @@ export function EstadisticasJugadas() {
                         />
                     </div>
                 </div>
-                <div className="grafico-card">
+                <div >
                     <h5 className="titulo-grafico">Lanzamientos - Tendencia Central</h5>
                     <div className="grafico-wrapper">
                         <Bar
@@ -200,9 +199,9 @@ export function EstadisticasJugadas() {
             </div>
 
             {/* Resumen estadistico de los resultados  */}
-            <div className="resumen-estadistico">
+            <div className="resumen-estadisticoA">
                 <div className="grid-tres-columnas">
-                    <div className="grafico-card">
+                    <div >
                         <h5 className="titulo-grafico">Repeticiones - Dispersión</h5>
                         <div className="grafico-wrapper">
                             <Doughnut
@@ -211,7 +210,7 @@ export function EstadisticasJugadas() {
                             />
                         </div>
                     </div>
-                    <div className="grafico-card">
+                    <div >
                         <h5 className="titulo-grafico">Tiempo - Dispersión</h5>
                         <div className="grafico-wrapper">
                             <Doughnut
@@ -220,7 +219,7 @@ export function EstadisticasJugadas() {
                             />
                         </div>
                     </div>
-                    <div className="grafico-card">
+                    <div>
                         <h5 className="titulo-grafico">Lanzamientos - Dispersión</h5>
                         <div className="grafico-wrapper">
                             <Doughnut

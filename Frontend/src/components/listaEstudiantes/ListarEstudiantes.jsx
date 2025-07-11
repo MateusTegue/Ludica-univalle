@@ -1,6 +1,7 @@
 
 import { useEffect, useState, useMemo } from "react";
 import { getEstudiantes } from "../../services/estudiante";
+import { FcInspection } from "react-icons/fc";
 import { 
   Chart as ChartJS,
   CategoryScale,
@@ -34,6 +35,22 @@ export function ListarEstudiantes() {
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
 
+    const totalEstudiantes = estudiantes.length;
+
+    const totalData = {
+    labels: ['Estudiantes'],
+    datasets: [
+        {
+        label: 'Total de Estudiantes',
+        data: [totalEstudiantes, 1000 - totalEstudiantes], // 1000 como referencia total posible
+        backgroundColor: ['#36A2EB', '#E0E0E0'],
+        borderWidth: 1,
+        },
+    ],
+    };
+
+
+
     useEffect(() => {
         async function cargarEstudiantes() {
             try {
@@ -47,9 +64,14 @@ export function ListarEstudiantes() {
             }
         }
         cargarEstudiantes();
+
+        const intervalo = setInterval(() => {
+            cargarEstudiantes(); 
+        }, 5000);
+
+        return () => clearInterval(intervalo); 
     }, []);
 
-    // Obtener los 5 mejores estudiantes combinando las tres métricas
     const top5Estudiantes = useMemo(() => {
         if (!estudiantes.length) return [];
         
@@ -166,53 +188,60 @@ export function ListarEstudiantes() {
 
     return (
         <section className="dashboard">
-        <div className="dashboard-estudiantes">
-            <h3 className="titulo-lista">Top 5 Mejores Estudiantes</h3>
-            
-            <div className="grid-graficos">
-                <div className="grafico-container">
-                    <h3>Repeticiones y Lanzamientos</h3>
-                    <Bar 
-                        data={barData} 
-                        options={{
-                            responsive: true,
-                            plugins: {
-                                legend: { position: 'top' }
-                            },
-                            scales: {
-                                y: { beginAtZero: true }
-                            }
-                        }} 
-                    />
-                </div>
+            <div className="dashboard-estudiantes">
+                <h3 className="titulo-lista">Top 5 Mejores Estudiantes</h3>
                 
-                <div className="grafico-container">
-                    <h3>Tiempos de Ejecución</h3>
-                    <Line 
-                        data={lineData} 
-                        options={{
-                            responsive: true,
-                            scales: {
-                                y: { beginAtZero: true }
-                            }
-                        }} 
-                    />
-                </div>
-                
-                <div className="grafico-container">
-                    <h3>Distribución por Carrera</h3>
-                    <Pie 
-                        data={pieData} 
-                        options={{ 
-                            responsive: true,
-                            plugins: {
-                                legend: { position: 'right' }
-                            }
-                        }} 
-                    />
+                <div className="grid-graficos">
+                    <div className="grafico-container">
+                        <h3>Repeticiones y Lanzamientos</h3>
+                        <Bar 
+                            data={barData} 
+                            options={{
+                                responsive: true,
+                                plugins: {
+                                    legend: { position: 'top' }
+                                },
+                                scales: {
+                                    y: { beginAtZero: true }
+                                }
+                            }} 
+                        />
+                    </div>
+                    
+                    <div className="grafico-container">
+                        <h3>Tiempos de Ejecución</h3>
+                        <Line 
+                            data={lineData} 
+                            options={{
+                                responsive: true,
+                                scales: {
+                                    y: { beginAtZero: true }
+                                }
+                            }} 
+                        />
+                    </div>
+                    <div className="grafico-container-2">
+                        <h3>Total de Estudiantes</h3>
+                        <div className="grafico-container-estudiantes">
+                            <div><FcInspection size={100}/></div>
+                            <div><h2>{estudiantes.length}</h2></div>
+                        </div>
+                    </div>
+                    <div className="grafico-container">
+                        <h3>Distribución por Carrera</h3>
+                        <Pie 
+                            data={pieData} 
+                            options={{ 
+                                responsive: true,
+                                plugins: {
+                                    legend: { position: 'right' }
+                                }
+                            }} 
+                        />
+                        
+                    </div>                    
                 </div>
             </div>
-        </div>
         </section>
     );
 }

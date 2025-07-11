@@ -151,7 +151,6 @@ export function TotalEstudiantes() {
     return (
         <section className="dashboard2">
             <div className="dashboard-estudiantes">
-                <h1 className="titulo-lista">Estadísticas de Estudiantes</h1>
                 <div className="grid-graficos">
                     <div className="grafico-container">
                         <h2>Repeticiones y Lanzamientos</h2>
@@ -166,22 +165,6 @@ export function TotalEstudiantes() {
                             }} 
                         />
                     </div>
-                    {/* <div className="grafico-containerBar" style={{ overflowX: 'auto' }}>
-                       <h2>Repeticiones y Lanzamientos</h2>
-                         <div style={{ minWidth: '800px' }}>
-                            <Bar 
-                            data={barData} 
-                            options={{
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                plugins: {
-                                legend: { position: 'top' },
-                                title: { display: true, text: 'Comparación por estudiante' }
-                                }
-                            }} 
-                            />
-                          </div>
-                        </div> */}
                     <div className="grafico-container">
                         <h2>Tiempos de Ejecución</h2>
                         <Line 
