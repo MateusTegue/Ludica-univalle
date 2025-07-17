@@ -15,6 +15,7 @@ import {
   Legend
 } from 'chart.js';
 import { Bar, Line, Pie } from 'react-chartjs-2';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import "./ListarEstudiantes.css";
 
 // Registrar componentes necesarios de Chart.js
@@ -199,15 +200,24 @@ export function ListarEstudiantes() {
                             options={{
                                 responsive: true,
                                 plugins: {
-                                    legend: { position: 'top' }
+                                legend: { position: 'top' },
+                                datalabels: {
+                                    anchor: 'end',
+                                    align: 'top',
+                                    color: '#000',  
+                                    font: {
+                                    weight: 'bold'
+                                    },
+                                    formatter: (value) => value  
+                                }
                                 },
                                 scales: {
-                                    y: { beginAtZero: true }
+                                y: { beginAtZero: true }
                                 }
-                            }} 
-                        />
+                            }}
+                            plugins={[ChartDataLabels]}
+                            />
                     </div>
-                    
                     <div className="grafico-container">
                         <h3>Tiempos de Ejecución</h3>
                         <Line 
@@ -234,11 +244,23 @@ export function ListarEstudiantes() {
                             options={{ 
                                 responsive: true,
                                 plugins: {
-                                    legend: { position: 'right' }
+                                legend: { position: 'right' },
+                                datalabels: {
+                                    color: '#000',
+                                    formatter: (value, context) => {
+                                    const total = context.chart._metasets[0].total;
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${percentage}%`;
+                                    },
+                                    font: {
+                                    weight: 'bold',
+                                    size: 14
+                                    }
                                 }
-                            }} 
-                        />
-                        
+                                }
+                            }}
+                            plugins={[ChartDataLabels]}
+                            />
                     </div>                    
                 </div>
             </div>

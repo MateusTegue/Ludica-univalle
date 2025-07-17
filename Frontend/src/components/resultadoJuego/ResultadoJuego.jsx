@@ -13,11 +13,9 @@ import {
 import { Bar, Pie, Radar } from 'react-chartjs-2';
 import { Line } from 'react-chartjs-2';
 import { Doughnut } from 'react-chartjs-2';
-import { Bubble } from 'react-chartjs-2';
 
 import './ResultadoJuego.css';
 
-// registramos los componenetes necesarios para realozar la graficas 
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -28,7 +26,6 @@ ChartJS.register(
 );
 
 export function EstadisticasJugadas() {
-    // Estado para almacenar las estadísticas
     const formatNumber = (num) => {
         if (typeof num === 'number') return num.toFixed(2);
         if (Array.isArray(num)) return num.map(n => n.toFixed(2)).join(', ');
@@ -89,7 +86,6 @@ export function EstadisticasJugadas() {
             enabled: true
             }
         },
-        // Eliminamos las escalas
         scales: {
             x: {
             display: false

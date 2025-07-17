@@ -1,24 +1,18 @@
 import { useRef } from "react";
+import React from "react";
 import MenuOpciones from "../../components/options/MenuOpciones";
 import { TotalEstudiantes } from "../../components/totalEstudiantes/TotalEstudiantes";
-import "./TotalEstudiante.css"; // Importa los estilos
+import "./TotalEstudiante.css"; 
 
-// pagina donde vamos a tener el resumen general de todos los estudiantes 
-const RegistroPage = () => {
-  const formRef = useRef();
-  const manejarRegistro = () => {
-    if (formRef.current) {
-      formRef.current.registrar(); 
-    }
-  };
+const TotalEstudiantesPage = () => {
   return (
     <div className="total-estudiante-page">
-      <MenuOpciones onRegistrar={manejarRegistro} />
-      <div className="formulario-container">
+      <MenuOpciones />
+      <div className="container-page">
         <TotalEstudiantes/>
       </div>
     </div>
   );
 };
 
-export default RegistroPage;
+export default TotalEstudiantesPage;

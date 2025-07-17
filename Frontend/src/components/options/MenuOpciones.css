@@ -1,18 +1,14 @@
 .menu-opciones {
-    margin-top: 60px;
     background-color: #DCEEDB;
     width: 200px;
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 100;
+    min-height: 100vh;
     padding: 20px 10px;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    border-right: 1px solid black
+ 
 }
+
 
 .menu-opciones h2 {
     font-size: 1.2rem;

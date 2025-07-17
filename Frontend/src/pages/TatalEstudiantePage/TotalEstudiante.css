@@ -1,10 +1,15 @@
+.total-estudiante-page {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
 
-
-.total-estudiante-page{
-    background-color: red;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; */
+.container-page {
+  flex: 1;
+  display: flex;
+  align-items: center;        
+  justify-content: center;   
+  background-color: white;
+  padding: 20px;
+  box-sizing: border-box;
 }

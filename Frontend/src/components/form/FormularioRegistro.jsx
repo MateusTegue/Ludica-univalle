@@ -1,9 +1,12 @@
 import { useState, useImperativeHandle, forwardRef, useRef } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { registrarEstudiante } from "../../services/estudiante.js";
 import CarreraSelect from "../programasAcademicos/ProgramasAcademicos.jsx";
 import CiudadesSelect from "../ciudades/ciudadesComponent.jsx";
+import SemestreAcademico from "../semestreAcademico/SemestreAcademico.jsx";
 import Cronometro from "../cronometro/cronometro.jsx";
-import "./FormularioRegistro.css"; // Importa los estilos
+import "./FormularioRegistro.css";
 
 const FormularioRegistro = forwardRef((props, ref) => {
   const initialFormData = {
@@ -50,14 +53,13 @@ const FormularioRegistro = forwardRef((props, ref) => {
     if (e) e.preventDefault();
     try {
       const response = await registrarEstudiante(formData);
-      alert("Estudiante registrado con éxito");
+      toast.success("Estudiante registrado con éxito");
       setFormData(initialFormData);
       cronometroRef.current?.stop();
       cronometroRef.current?.reset();
     } catch (error) {
       console.error("Error al registrar el estudiante:", error);
-      alert("Error al registrar el estudiante");
-    }
+      toast.error("Error al registrar el estudiante");    }
   };
 
   useImperativeHandle(ref, () => ({
@@ -67,17 +69,24 @@ const FormularioRegistro = forwardRef((props, ref) => {
   return (
     <form onSubmit={handleSubmit} className="form-registro">
       <h2>Datos del Estudiante</h2>
-      <input name="estudiante.codigo" placeholder="Código" value={formData.estudiante.codigo}onChange={handleChange} />
+      <input name="estudiante.codigo" type="number" placeholder="Código 2644679"  value={formData.estudiante.codigo} onChange={(e) => {
+        const value = e.target.value;
+        if (value.length <= 7) {
+          handleChange(e);
+        }
+      }}/>
       <input name="estudiante.nombre" placeholder="Nombre" value={formData.estudiante.nombre} onChange={handleChange} />
       <input name="estudiante.edad" type="number" placeholder="Edad" value={formData.estudiante.edad} onChange={handleChange} />
-      <CarreraSelect name="estudiante.carrera" value={formData.estudiante.carrera} onChange={handleChange} />
-      <input name="estudiante.semestre" type="number" placeholder="Semestre" value={formData.estudiante.semestre}onChange={handleChange} />
       <CiudadesSelect name="estudiante.ciudad" value={formData.estudiante.ciudad} onChange={handleChange} />
+      <CarreraSelect name="estudiante.carrera" value={formData.estudiante.carrera} onChange={handleChange} />
+      <SemestreAcademico name="estudiante.semestre" value={formData.estudiante.semestre} onChange={handleChange} />
       <h2>Datos de la Jugada</h2>
       <Cronometro ref={cronometroRef} onTiempoChange={handleTiempoChange} />
       <input type="hidden" name="jugada.tiempo" value={formData.jugada.tiempo}/>
       <input name="jugada.repeticiones" type="number" placeholder="Repeticiones" value={formData.jugada.repeticiones}onChange={handleChange} />
       <input name="jugada.lanzamientos" type="number" placeholder="Lanzamientos" value={formData.jugada.lanzamientos}onChange={handleChange} />
+      <button type="submit">Registrar</button>
+      <ToastContainer position="top-right" autoClose={3000} />
     </form>
   );
 });

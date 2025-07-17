@@ -17,7 +17,7 @@ const RegistroPage = () => {
   return (
     <div className="registro-page">
       <MenuOpciones onRegistrar={manejarRegistro} />
-      <div className="formulario-container">
+      <div className="formulario-container-page">
         <FormularioRegistro ref={formRef} />
         <ListarEstudiantes/>
       </div>

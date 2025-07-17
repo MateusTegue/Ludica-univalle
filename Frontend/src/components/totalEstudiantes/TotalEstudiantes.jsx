@@ -189,6 +189,28 @@ export function TotalEstudiantes() {
                                 }
                             }} 
                         />
+                         {/* <Pie 
+                            data={pieData} 
+                            options={{ 
+                                responsive: true,
+                                plugins: {
+                                legend: { position: 'right' },
+                                datalabels: {
+                                    color: '#000',
+                                    formatter: (value, context) => {
+                                    const total = context.chart._metasets[0].total;
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${percentage}%`;
+                                    },
+                                    font: {
+                                    weight: 'bold',
+                                    size: 14
+                                    }
+                                }
+                                }
+                            }}
+                            plugins={[ChartDataLabels]}
+                            /> */}
                     </div>
                 </div>
             </div>

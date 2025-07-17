@@ -1,13 +1,16 @@
 .estadisticas-container {
-    width: 50%;
+    width: 60%;
+    margin: 0 auto;
+   
 }
 
 .grid-tres-columnas {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 20px;
     margin-bottom: 40px;
 }
+
 
 .titulo-grafico {
     text-align: center;
@@ -73,14 +76,7 @@
     color: #2c3e50;
 }
 
-.cargando, .error {
-    text-align: center;
-    padding: 40px;
-    font-size: 1.2em;
-    background: #f8f9fa;
-    border-radius: 8px;
-    margin: 20px;
-}
+
 
 .error {
     color: #e74c3c;

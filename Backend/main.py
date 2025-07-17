@@ -2,13 +2,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database.conexiondb import Base, engine
 from routes import estudiante
+from routes.calculoEstudiantesFiltrosRoutes import router as filtros_router  # ✅ Import corregido
 
 app = FastAPI()
 
 # Configuración CORS
 origins = [
-    "http://localhost:5173",  # Frontend con Vite
-    "http://127.0.0.1:5173",  # Alternativa localhost
+    "http://localhost:5173",  
 ]
 
 app.add_middleware(
@@ -23,6 +23,9 @@ app.add_middleware(
 Base.metadata.create_all(bind=engine)
 
 app.include_router(estudiante.router)
+app.include_router(filtros_router)
+
+# app.include_router(calculoEstudiantesFiltrosRoutes.router)
 
 
 

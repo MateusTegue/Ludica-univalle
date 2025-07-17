@@ -1,0 +1,17 @@
+
+.filto-container {
+    display: flex;
+     height: 100vh;
+     width: 100%;
+
+     
+}
+
+.filtro-estudiantes {
+  flex: 1;
+  margin-top: 100px;
+  width: 100%;
+  
+
+  
+}

@@ -1,20 +1,34 @@
 import React from 'react';
-import './MenuOpciones.css'; // Importa los estilos
+import { useNavigate } from 'react-router-dom';
+import './MenuOpciones.css';
 
 const MenuOpciones = ({ onRegistrar }) => {
-    return (
-        <aside className="menu-opciones">
-            <h2>Opciones</h2>
-            <div>
-                
-                <button onClick={onRegistrar}>Mostrar Datos</button>
-                <button onClick={onRegistrar}>Mostrar Datos</button>
-                <button onClick={onRegistrar}>Mostrar Datos</button>
-                <button onClick={onRegistrar}>Registrar</button>
+  const navigate = useNavigate(); // <-- Hook de navegación
 
-            </div>
-        </aside>
-    );
+  const irAFiltrosPorEdad = () => {
+    navigate('/filtros-edad');
+  };
+  const irAFiltrosPorCarrera = () => {
+    navigate('/filtros-carrera');
+  };
+  const irAFiltrosPorCiudad = () => {
+    navigate('/filtros-ciudad');
+  };
+  const irAFiltrosPorSemestre = () => {
+    navigate('/filtros-semestre');
+  };
+
+  return (
+    <aside className="menu-opciones">
+      <h2>Opciones</h2>
+      <div>
+        <button onClick={irAFiltrosPorSemestre}>Resultado Semest...</button>
+        <button onClick={irAFiltrosPorCiudad}>Resultado Por Ciudad</button>
+        <button onClick={irAFiltrosPorEdad}>Resultado por Edad</button> 
+        <button onClick={irAFiltrosPorCarrera}>Resultado por Carrera</button>
+      </div>
+    </aside>
+  );
 };
 
 export default MenuOpciones;

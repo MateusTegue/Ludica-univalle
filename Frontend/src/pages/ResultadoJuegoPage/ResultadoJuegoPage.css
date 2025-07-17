@@ -1,0 +1,14 @@
+
+
+.resultado-estudiante-page {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.resultado-container {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  align-content: center;
+}

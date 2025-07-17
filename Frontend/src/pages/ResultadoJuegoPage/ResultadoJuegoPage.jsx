@@ -1,6 +1,7 @@
 import MenuOpciones from "../../components/options/MenuOpciones";
 import { useRef } from "react";
 import { EstadisticasJugadas } from "../../components/resultadoJuego/ResultadoJuego";
+import './ResultadoJuegoPage.css'
 
 // pagina el la cual se va a mostrar la estadistica del juego 
 const EstudianteJugada = () => {
@@ -11,9 +12,9 @@ const EstudianteJugada = () => {
       }
     };
     return (
-      <div className="total-estudiante-page">
+      <div className="resultado-estudiante-page">
         <MenuOpciones onRegistrar={manejarRegistro} />
-        <div className="formulario-container">
+        <div className="resultado-container">
           <EstadisticasJugadas/>
         </div>
       </div>
