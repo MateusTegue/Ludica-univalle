@@ -37,6 +37,10 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+.resumen-estadisticoA{
+    margin-top: 150px;
+}
+
 .titulo-resumen {
     text-align: center;
     color: #2c3e50;
@@ -76,12 +80,22 @@
     color: #2c3e50;
 }
 
+.metricas-detalle {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.metricas-detalle p {
+  margin: 0;
+}
+
 
 
 .error {
     color: #e74c3c;
     background: #fdecea;
 }
+
 
 @media (max-width: 1200px) {
     .grid-tres-columnas,

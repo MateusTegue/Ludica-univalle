@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { getEstudiantes } from "../../services/estudiante";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 import { 
   Chart as ChartJS,
   CategoryScale,
@@ -180,7 +182,7 @@ export function TotalEstudiantes() {
                     
                     <div className="grafico-container">
                         <h2>Distribución por Carrera</h2>
-                        <Pie 
+                        {/* <Pie 
                             data={pieData} 
                             options={{ 
                                 responsive: true,
@@ -188,8 +190,8 @@ export function TotalEstudiantes() {
                                     legend: { position: 'right' }
                                 }
                             }} 
-                        />
-                         {/* <Pie 
+                        /> */}
+                         <Pie 
                             data={pieData} 
                             options={{ 
                                 responsive: true,
@@ -210,7 +212,7 @@ export function TotalEstudiantes() {
                                 }
                             }}
                             plugins={[ChartDataLabels]}
-                            /> */}
+                            />
                     </div>
                 </div>
             </div>

@@ -143,6 +143,33 @@ export function EstadisticasJugadas() {
 };
 
 
+const mostrarMetricas = (metric, esTiempo = false) => {
+  const datos = estadisticas[metric];
+
+  const formatear = (v) =>
+    v != null
+      ? esTiempo
+        ? (v / 60).toFixed(2) + ' min'
+        : Number.isInteger(v)
+        ? v
+        : v.toFixed(2)
+      : 'N/A';
+
+  return (
+    <div className="metricas-detalle">
+      <p>Media: {formatear(datos.media)}</p>
+      <p>Mediana: {formatear(datos.mediana)}</p>
+      <p>Moda: {
+        Array.isArray(datos.moda)
+          ? datos.moda.map(m => formatear(m)).join(', ')
+          : formatear(datos.moda)
+      }</p>
+      <p>Desviación: {formatear(datos.desviacion)}</p>
+      <p>Varianza: {formatear(datos.varianza)}</p>
+    </div>
+  );
+};
+
 
     return (
         <div className="estadisticas-container">
@@ -160,6 +187,8 @@ export function EstadisticasJugadas() {
                                 }
                             }}
                         />
+                        {mostrarMetricas('repeticiones')}
+
                     </div>
                 </div>
                 <div>
@@ -175,6 +204,8 @@ export function EstadisticasJugadas() {
                                 }
                             }}
                         />
+                        {mostrarMetricas('tiempo', true)} {/* true = convertir a minutos */}
+
                     </div>
                 </div>
                 <div >
@@ -190,6 +221,7 @@ export function EstadisticasJugadas() {
                                 }
                             }}
                         />
+                        {mostrarMetricas('lanzamientos')}
                     </div>
                 </div>
             </div>

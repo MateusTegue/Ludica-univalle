@@ -254,7 +254,7 @@ const ListaEstudiantesTable = () => {
     body: data,
   });
 
-  doc.save("estudiantes.pdf");
+  doc.save("Participantes.pdf");
 };
 
 

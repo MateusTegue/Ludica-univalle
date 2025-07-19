@@ -11,6 +11,7 @@ const CiudadesSelect = ({ value, onChange, name = "estudiante.ciudad" }) => {
       <option value="Dagua">Dagua</option>
       <option value="Florida">Florida</option>
       <option value="Pradera">Pradera</option>
+      <option value="Palmira">Palmira</option>
       <option value="Restrepo">Restrepo</option>
       <option value="Tulua">Tulua</option>
       <option value="Yumbo">Yumbo</option>

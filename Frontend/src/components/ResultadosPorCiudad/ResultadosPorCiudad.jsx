@@ -65,6 +65,9 @@ const ResultadosPorCiudad = () => {
   return estudiantes.filter((e) => (e.estudiante?.ciudad || "Sin ciudad") === ciudad).length;
 };
 
+  const datosRepeticiones = resultados?.repeticiones || {};
+  const datosTiempo = resultados?.tiempo || {};
+  const datosLanzamientos = resultados?.lanzamientos || {};
 
   const generarDatosMetrica = (titulo, metrica) => {
     const datos = resultados?.[metrica] || {};
@@ -120,12 +123,39 @@ const ResultadosPorCiudad = () => {
           <div className="grafico-container">
             <div className="chart-box">
               <Bar {...generarDatosMetrica("Repeticiones", "repeticiones")} />
+              <div className="metricas-detalle">
+                <p>Media: {datosRepeticiones.media ?? "N/A"}</p>
+                <p>Mediana: {datosRepeticiones.mediana ?? "N/A"}</p>
+                <p>Moda: {Array.isArray(datosRepeticiones.moda) ? datosRepeticiones.moda.join(", ") : datosRepeticiones.moda ?? "N/A"}</p>
+                <p>Desviación: {datosRepeticiones.desviacion ?? "N/A"}</p>
+                <p>Varianza: {datosRepeticiones.varianza ?? "N/A"}</p>
+              </div>
             </div>
             <div className="chart-box">
               <Bar {...generarDatosMetrica("Tiempo", "tiempo")} />
-            </div>
+              <div className="metricas-detalle">
+                <p>Media: {datosTiempo.media ? (datosTiempo.media / 60).toFixed(2) + " min" : "N/A"}</p>
+                <p>Mediana: {datosTiempo.mediana ? (datosTiempo.mediana / 60).toFixed(2) + " min" : "N/A"}</p>
+                <p>Moda: {
+                  Array.isArray(datosTiempo.moda)
+                    ? datosTiempo.moda.map((m) => (m / 60).toFixed(2)).join(", ") + " min"
+                    : datosTiempo.moda
+                      ? (datosTiempo.moda / 60).toFixed(2) + " min"
+                       : "N/A"
+                }</p>
+                <p>Desviación: {datosTiempo.desviacion ? (datosTiempo.desviacion / 60).toFixed(2) + " min" : "N/A"}</p>
+                <p>Varianza: {datosTiempo.varianza ? (datosTiempo.varianza / 60).toFixed(2) + " min²" : "N/A"}</p>
+              </div>
+             </div>
             <div className="chart-box">
               <Bar {...generarDatosMetrica("Lanzamientos", "lanzamientos")} />
+              <div className="metricas-detalle">
+                <p>Media: {datosLanzamientos.media ?? ""}</p>
+                <p>Mediana: {datosLanzamientos.mediana ?? "N/A"}</p>
+                <p>Moda: {Array.isArray(datosLanzamientos.moda) ? datosLanzamientos.moda.join(", ") : datosLanzamientos.moda ?? "N/A"}</p>
+                <p>Desviación: {datosLanzamientos.desviacion ?? "N/A"}</p>
+                <p>Varianza: {datosLanzamientos.varianza ?? "N/A"}</p>
+              </div>
             </div>
           </div>
         </div>

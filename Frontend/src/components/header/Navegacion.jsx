@@ -6,7 +6,7 @@ import './Navegacion.css'; // Importa los estilos
 export function Navegacion() {
     return (
         <header className="navegacion-header ">
-         <h2>Ludica Univalle</h2>
+         <h2 className='Logo'>Ludica Univalle</h2>
         <nav className="navegacion-nav">
             <Link to="/home" className="navegacion-link">
                 Home
