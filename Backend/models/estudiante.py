@@ -6,7 +6,7 @@ class Estudiante(Base):
     __tablename__ = 'estudiante'
 
     id = Column(Integer, primary_key=True, index=True)
-    codigo = Column(String(50), unique=True, nullable=False)
+    codigo = Column(String(50), unique=False, nullable=False)
     nombre = Column(String(50), nullable=False)
     edad = Column(Integer, nullable=False)
     carrera = Column(String(50), nullable=False)
